@@ -3,9 +3,11 @@ name: Hello GitHub Actions
 on: [push]
 
 jobs:
-  hello-job:
+  workspace-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Hello Message
-        run: echo "Hello GitHub Actions"
+      - name: Create a text file in workspace
+        run: echo "This file is created inside GitHub Actions workspace" > sample.txt
 
+      - name: Display file contents
+        run: cat sample.txt
