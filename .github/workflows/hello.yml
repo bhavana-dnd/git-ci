@@ -1,13 +1,16 @@
-name: Hello GitHub Actions
+name: Git Integration Demo
 
 on: [push]
 
 jobs:
-  workspace-job:
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Create a text file in workspace
-        run: echo "This file is created inside GitHub Actions workspace" > sample.txt
 
-      - name: Display file contents
-        run: cat sample.txt
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v4
+
+      - name: Verify files
+        run: |
+          echo "Files in repository:"
+          ls
